@@ -12,7 +12,7 @@ opts.AddVariables(
 	( 'libsuffix',                  'Extra library name suffix', '' ),
 	EnumVariable( 'tools',          'Tools to use to build', 'gnu', allowed_values=( 'intel', 'gnu', 'msvc' ) ),
 	( 'foundationpath',             'Path to foundation library', '' ),
-	( 'luapath',                    'Path to lua library', '' ),
+	( 'networkpath',                'Path to network library', '' ),
 )
 
 baseenv = Environment( variables=opts )

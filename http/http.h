@@ -19,6 +19,14 @@
 #include <http/types.h>
 
 
+//! Initialize library
+/*! \return                                             0 if success, -1 if error */
+HTTP_API int                                            http_initialize( void );
+
+//! Shutdown library
+HTTP_API void                                           http_shutdown( void );
+
+
 //! GET request
 /*! \param url                                          URL
 	\param headers                                      Extra headers (use LF for line separator, will be replaced to CRLF when written to socket)

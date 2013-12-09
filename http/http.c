@@ -15,6 +15,17 @@
 #include <foundation/foundation.h>
 
 
+int http_initialize( void )
+{
+	return network_initialize( 0 );
+}
+
+
+void http_shutdown( void )
+{
+}
+
+
 static object_t _http_open( const char* url, const char* headers, const char* cmd, unsigned int timeout )
 {
 	const char* cleanpath = url;	

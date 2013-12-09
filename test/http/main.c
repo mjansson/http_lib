@@ -31,12 +31,15 @@ memory_system_t test_http_memory_system( void )
 
 int test_http_initialize( void )
 {
-	return network_initialize( 32 );
+	if( network_initialize( 32 ) )
+		return -1;
+	return http_initialize();
 }
 
 
 void test_http_shutdown( void )
 {
+	http_shutdown();
 	network_shutdown();
 }
 
