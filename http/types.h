@@ -1,67 +1,44 @@
-/* types.h  -  Network library  -  Internal use only  -  2013 Mattias Jansson / Rampant Pixels
+/* http.h  -  HTTP library  -  Public Domain  -  2013 Mattias Jansson / Rampant Pixels
  * 
- * This library provides a network abstraction built on foundation streams.
- *
- * All rights reserved. No part of this library, code or built products may be used without
- * the explicit consent from Rampant Pixels AB
+ * This library provides a HTTP communication library built on our foundation and
+ * network libraries. The latest source code is always available at
+ * 
+ * https://github.com/rampantpixels/http_lib
+ * 
+ * This library is put in the public domain; you can redistribute it and/or modify it without any restrictions.
  * 
  */
 
 #pragma once
 
 /*! \file types.h
-    Network abstraction on top of foundation streams */
+    HTTP data types */
 
 #include <foundation/platform.h>
 #include <foundation/types.h>
 
-#include <network/build.h>
+#include <network/types.h>
+
+#include <http/build.h>
 
 
-#if defined( NETWORK_COMPILE ) && NETWORK_COMPILE
+#if defined( HTTP_COMPILE ) && HTTP_COMPILE
 #  ifdef __cplusplus
-#  define NETWORK_EXTERN extern "C"
-#  define NETWORK_API extern "C"
+#  define HTTP_EXTERN extern "C"
+#  define HTTP_API extern "C"
 #  else
-#  define NETWORK_EXTERN extern
-#  define NETWORK_API extern
+#  define HTTP_EXTERN extern
+#  define HTTP_API extern
 #  endif
 #else
 #  ifdef __cplusplus
-#  define NETWORK_EXTERN extern "C"
-#  define NETWORK_API extern "C"
+#  define HTTP_EXTERN extern "C"
+#  define HTTP_API extern "C"
 #  else
-#  define NETWORK_EXTERN extern
-#  define NETWORK_API extern
+#  define HTTP_EXTERN extern
+#  define HTTP_API extern
 #  endif
 #endif
-
-
-typedef enum _network_address_family
-{
-	NETWORK_ADDRESSFAMILY_IPV4     = 0,
-	NETWORK_ADDRESSFAMILY_IPV6
-} network_address_family_t;
-
-
-typedef enum _socket_state
-{
-	SOCKETSTATE_NOTCONNECTED       = 0,
-	SOCKETSTATE_CONNECTING,
-	SOCKETSTATE_CONNECTED,
-	SOCKETSTATE_LISTENING,
-	SOCKETSTATE_DISCONNECTED
-} socket_state_t;
-
-typedef enum _network_event_id
-{
-	NETWORKEVENT_CONNECTION = 0,
-	NETWORKEVENT_CONNECTED,
-	NETWORKEVENT_DATAIN,
-	NETWORKEVENT_ERROR,
-	NETWORKEVENT_HANGUP,
-	NETWORKEVENT_TIMEOUT
-} network_event_id;
 
 //! HTTP status codes
 typedef enum _http_status
@@ -113,7 +90,3 @@ typedef enum _http_status
 	HTTP_GATEWAY_TIMEOUT                                     = 504,
 	HTTP_VERSION_NOT_SUPPORTED                               = 505
 } http_status_t;
-
-typedef struct _network_address     network_address_t;
-typedef struct _network_poll        network_poll_t;
-

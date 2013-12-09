@@ -1,20 +1,22 @@
-/* http.h  -  Network library  -  Internal use only  -  2013 Mattias Jansson / Rampant Pixels
+/* http.h  -  HTTP library  -  Public Domain  -  2013 Mattias Jansson / Rampant Pixels
  * 
- * This library provides a network abstraction built on foundation streams.
- *
- * All rights reserved. No part of this library, code or built products may be used without
- * the explicit consent from Rampant Pixels AB
+ * This library provides a HTTP communication library built on our foundation and
+ * network libraries. The latest source code is always available at
+ * 
+ * https://github.com/rampantpixels/http_lib
+ * 
+ * This library is put in the public domain; you can redistribute it and/or modify it without any restrictions.
  * 
  */
 
 #pragma once
 
-/*! \file build.h
+/*! \file http.h
     HTTP methods */
 
 #include <foundation/platform.h>
 
-#include <network/types.h>
+#include <http/types.h>
 
 
 //! GET request
@@ -22,7 +24,7 @@
 	\param headers                                      Extra headers (use LF for line separator, will be replaced to CRLF when written to socket)
 	\param timeout                                      Timeout in milliseconds
 	\return                                             Socket, null if error */
-NETWORK_API object_t                                    http_get( const char* url, const char* headers, unsigned int timeout );
+HTTP_API object_t                                       http_get( const char* url, const char* headers, unsigned int timeout );
 
 //! POST request
 /*! \param url                                          URL
@@ -31,12 +33,12 @@ NETWORK_API object_t                                    http_get( const char* ur
 	\param headers                                      Extra headers (use LF for line separator, will be replaced to CRLF when written to socket)
 	\param timeout                                      Timeout in milliseconds
 	\return                                             Socket, null if error */
-NETWORK_API object_t                                    http_post( const char* url, const void* data, unsigned int length, const char* headers, unsigned int timeout );
+HTTP_API object_t                                       http_post( const char* url, const void* data, unsigned int length, const char* headers, unsigned int timeout );
 
 //! Parse reply headers
 /*! Parse headers in HTTP reply, as status code and a key-value map
 	\param sock                                         Socket
 	\param headers                                      Pointer to array receiving headers as string pairs (key,value,key,value,...) if not null
 	\return                                             Status code */
-NETWORK_API http_status_t                               http_parse_reply( object_t sock, char*** headers );
+HTTP_API http_status_t                                  http_parse_reply( object_t sock, char*** headers );
 

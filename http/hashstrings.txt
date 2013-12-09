@@ -1,2 +1,2 @@
 
-HASH_NETWORK                            network
+HASH_HTTP                                  http
