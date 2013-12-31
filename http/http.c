@@ -56,7 +56,7 @@ static object_t _http_open( const char* url, const char* headers, const char* cm
 	addresses = network_address_resolve( address_str );
 	if( !addresses )
 	{
-		log_warnf( HASH_NETWORK, WARNING_BAD_DATA, "HTTP %s request failed, unable to resolve host: %s", cmd, host );
+		log_warnf( HASH_HTTP, WARNING_BAD_DATA, "HTTP %s request failed, unable to resolve host: %s", cmd, host );
 		goto exit;
 	}
 
@@ -92,13 +92,13 @@ static object_t _http_open( const char* url, const char* headers, const char* cm
 	
 	if( !connected )
 	{
-		log_warnf( HASH_NETWORK, WARNING_BAD_DATA, "HTTP %s request failed, unable to connect to host: %s", cmd, host );
+		log_warnf( HASH_HTTP, WARNING_BAD_DATA, "HTTP %s request failed, unable to connect to host: %s", cmd, host );
 		socket_free( sock );
 		sock = 0;
 		goto exit;
 	}
 
-	log_debugf( HASH_NETWORK, "Sending HTTP %s request to host %s: %s /%s HTTP/1.1", cmd, host, cmd, name );
+	log_debugf( HASH_HTTP, "Sending HTTP %s request to host %s: %s /%s HTTP/1.1", cmd, host, cmd, name );
 
 	//According to the HTTP RFC the line separator should be CRLF, not just LF
 	request = string_replace( request, "\n", "\r\n", false );
