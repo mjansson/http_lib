@@ -6,15 +6,15 @@ Import("env")
 
 # SOURCES
 
-networksources = [
+httpsources = [
 
-	'address.c', 'event.c', 'http.c', 'network.c', 'poll.c', 'socket.c', 'tcp.c'
+	'http.c'
 
 	]
 
-networkheaders = [
+httpheaders = [
 
-	'address.h', 'build.h', 'event.h', 'http.h', 'internal.h', 'network.h', 'poll.h', 'socket.h', 'tcp.h', 'types.h'
+	'build.h', 'hashstrings.h', 'http.h', 'internal.h', 'types.h'
 
 	]
 
@@ -22,12 +22,12 @@ networkheaders = [
 # ADD INTERNAL FLAGS
 
 libenv = env.Clone()
-libenv.Append( CPPDEFINES=['NETWORK_COMPILE=1'] )
+libenv.Append( CPPDEFINES=['HTTP_COMPILE=1'] )
 
 
 # OUTPUTS
 
-env['networklib'] = libenv.StaticLibrary( 'network', networksources )
+env['httplib'] = libenv.StaticLibrary( 'http', httpsources )
 
 
 # DEPENDENCIES
@@ -38,4 +38,4 @@ env['networklib'] = libenv.StaticLibrary( 'network', networksources )
 
 # INSTALLS
 
-libenv.AddPostAction( 'network', libenv.Install( '#lib/${platform}${platformsuffix}/${buildprofile}', [ env['networklib'] ] ) )
+libenv.AddPostAction( 'http', libenv.Install( '#lib/${platform}${platformsuffix}/${buildprofile}', [ env['httplib'] ] ) )

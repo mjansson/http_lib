@@ -7,6 +7,7 @@
  * 
  */
 
+#include <http/http.h>
 #include <network/network.h>
 #include <foundation/foundation.h>
 #include <test/test.h>
