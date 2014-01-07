@@ -50,3 +50,28 @@ HTTP_API object_t                                       http_post( const char* u
 	\return                                             Status code */
 HTTP_API http_status_t                                  http_parse_reply( object_t sock, char*** headers );
 
+
+#if BUILD_USE_TASK
+
+//! Async GET request
+/*! \param url                                          URL
+	\param headers                                      Extra headers (use LF for line separator, will be replaced to CRLF when written to socket)
+	\param timeout                                      Timeout in milliseconds
+	\return                                             Task, null if error */
+HTTP_API object_t                                       http_async_get( const char* url, const char* headers, unsigned int timeout );
+
+//! Async POST request
+/*! \param url                                          URL
+	\param data                                         Data
+	\param length                                       Data length
+	\param headers                                      Extra headers (use LF for line separator, will be replaced to CRLF when written to socket)
+	\param timeout                                      Timeout in milliseconds
+	\return                                             Task, null if error */
+HTTP_API object_t                                       http_async_post( const char* url, const void* data, unsigned int length, const char* headers, unsigned int timeout );
+
+//! Get async HTTP task socket
+/*! \param task                                         Async HTTP task
+    \return                                             Socket, null if error */
+HTTP_API object_t                                       http_async_socket( const object_t task );
+
+#endif

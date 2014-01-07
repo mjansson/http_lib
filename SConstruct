@@ -13,6 +13,7 @@ opts.AddVariables(
 	EnumVariable( 'tools',          'Tools to use to build', 'gnu', allowed_values=( 'intel', 'gnu', 'msvc' ) ),
 	( 'foundationpath',             'Path to foundation library', '' ),
 	( 'networkpath',                'Path to network library', '' ),
+	( 'taskpath',                   'Path to task library', '' ),
 )
 
 baseenv = Environment( variables=opts )
@@ -215,6 +216,10 @@ if not env['foundationpath'] == '':
 if not env['networkpath'] == '':
 	env.Append( CPPPATH=[env['networkpath']] )
 	env.Append( LIBPATH=[env['networkpath'] + '/lib/${platform}${platformsuffix}/${buildprofile}', env['networkpath'] + '/lib/${platform}${platformsuffix}'] )
+
+if not env['taskpath'] == '':
+	env.Append( CPPPATH=[env['taskpath']] )
+	env.Append( LIBPATH=[env['taskpath'] + '/lib/${platform}${platformsuffix}/${buildprofile}', env['taskpath'] + '/lib/${platform}${platformsuffix}'] )
 
 env['buildpath'] = env['buildpath'] + '-' + env['platform'] + env['platformsuffix']
 

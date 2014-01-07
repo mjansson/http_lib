@@ -20,6 +20,7 @@
 #include <network/types.h>
 
 #include <http/build.h>
+#include <http/hashstrings.h>
 
 
 #if defined( HTTP_COMPILE ) && HTTP_COMPILE

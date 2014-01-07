@@ -8,3 +8,4 @@ libsuffix       = ''  # suffix appended to all target library filenames
 tools           = 'gnu'  # Tools to use, 'intel', 'gnu', 'msvc'
 foundationpath  = '#/../foundation_lib' # Path to foundation lib
 networkpath     = '#/../network_lib' # Path to network lib
+taskpath        = '#/../task_lib' # Path to task lib

@@ -19,3 +19,8 @@
 #include <http/types.h>
 
 
+//! Dependencies
+
+#ifndef BUILD_USE_TASK
+#  define BUILD_USE_TASK    1
+#endif

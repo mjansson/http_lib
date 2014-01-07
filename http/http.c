@@ -225,3 +225,26 @@ exit:
 	return code;
 }
 
+
+#if BUILD_USE_TASK
+
+
+object_t http_async_get( const char* url, const char* headers, unsigned int timeout )
+{
+	return 0;
+}
+
+
+object_t http_async_post( const char* url, const void* data, unsigned int length, const char* headers, unsigned int timeout )
+{
+	return 0;
+}
+
+
+object_t http_async_socket( const object_t task )
+{
+	return 0;
+}
+
+
+#endif
