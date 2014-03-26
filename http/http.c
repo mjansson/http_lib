@@ -93,7 +93,7 @@ static object_t _http_open( const char* url, const char* headers, const char* cm
 	if( !connected )
 	{
 		log_warnf( HASH_HTTP, WARNING_BAD_DATA, "HTTP %s request failed, unable to connect to host: %s", cmd, host );
-		socket_free( sock );
+		socket_destroy( sock );
 		sock = 0;
 		goto exit;
 	}
